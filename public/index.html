@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>React Tutorial</title>
+    <link rel="stylesheet" href="css/foundation-flex.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js"></script>
+    <script src="scripts/foundation.min.js"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="columns medium-6 medium-offset-3">
+            <div id="container">
+            </div>
+        </div>
+    </div>
+    <script type="text/babel">
+
+var words = [
+    {
+      "lev-ord" : "0001",
+      "name" : "爱",
+      "definition" : "to love; affection; to be fond of; to like",
+      "pinyin" : "ai4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0002",
+      "name" : "八",
+      "definition" : "eight; 8",
+      "pinyin" : "ba1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0003",
+      "name" : "爸爸",
+      "definition" : "(informal) father; CL:個|个[ge4],位[wei4]",
+      "pinyin" : "ba4 ba5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0004",
+      "name" : "杯子",
+      "definition" : "cup; glass; CL:個|个[ge4],支[zhi1],枝[zhi1]",
+      "pinyin" : "bei1 zi5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0005",
+      "name" : "北京",
+      "definition" : "Beijing, capital of People's Republic of China; Peking; PRC government",
+      "pinyin" : "Bei3 jing1",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0006",
+      "name" : "本",
+      "definition" : "roots or stems of plants; origin; source; this; the current; root; foundation; basis; classifier for books, periodicals, files etc; originally",
+      "pinyin" : "ben3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0007",
+      "name" : "不客气",
+      "definition" : "you're welcome; impolite; rude; blunt; don't mention it",
+      "pinyin" : "bu2 ke4 qi5",
+      "c-count" : "3"
+    },
+    {
+      "lev-ord" : "0008",
+      "name" : "不",
+      "definition" : "(negative prefix); not; no",
+      "pinyin" : "bu4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0009",
+      "name" : "菜",
+      "definition" : "dish (type of food); vegetables; vegetable; cuisine; CL:盤|盘[pan2],道[dao4]",
+      "pinyin" : "cai4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0010",
+      "name" : "茶",
+      "definition" : "tea; tea plant; CL:杯[bei1],壺|壶[hu2]",
+      "pinyin" : "cha2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0011",
+      "name" : "吃",
+      "definition" : "to eat; to have one's meal; to eradicate; to destroy; to absorb; to suffer; to exhaust",
+      "pinyin" : "chi1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0012",
+      "name" : "出租车",
+      "definition" : "taxi",
+      "pinyin" : "chu1 zu1 che1",
+      "c-count" : "3"
+    },
+    {
+      "lev-ord" : "0013",
+      "name" : "打电话",
+      "definition" : "to make a telephone call",
+      "pinyin" : "da3 dian4 hua4",
+      "c-count" : "3"
+    },
+    {
+      "lev-ord" : "0014",
+      "name" : "大",
+      "definition" : "big; huge; large; major; great; wide; deep; oldest; eldest",
+      "pinyin" : "da4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0015",
+      "name" : "的",
+      "definition" : "of; structural particle: used before a noun, linking it to preceding possessive or descriptive attributive",
+      "pinyin" : "de5",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0016",
+      "name" : "点",
+      "definition" : "drop (of liquid); stain; spot; speck; jot; dot stroke (in Chinese characters); decimal point; point; mark (of degree or level); a place (with certain characteristics); iron bell; o’clock; a little; a bit; some; (point) unit of measurement for type; to touch on briefly; to make clear; to light; to ignite; to kindle; period of time at night (24 minutes) (old); a drip; to dibble; classifier for small indeterminate quantities",
+      "pinyin" : "dian3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0017",
+      "name" : "电脑",
+      "definition" : "computer; CL:臺|台[tai2]",
+      "pinyin" : "dian4 nao3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0018",
+      "name" : "电视",
+      "definition" : "television; TV; CL:臺|台[tai2],個|个[ge4]",
+      "pinyin" : "dian4 shi4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0019",
+      "name" : "电影",
+      "definition" : "movie; film; CL:部[bu4],片[pian4],幕[mu4],場|场[chang3]",
+      "pinyin" : "dian4 ying3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0020",
+      "name" : "东西",
+      "definition" : "thing; stuff; person; CL:個|个[ge4],件[jian4]",
+      "pinyin" : "dong1 xi5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0021",
+      "name" : "都",
+      "definition" : "all, both; entirely (due to) each; even; already",
+      "pinyin" : "dou1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0022",
+      "name" : "读",
+      "definition" : "to read; to study; reading of word (i.e. pronunciation), similar to 拼音[pin1 yin1]",
+      "pinyin" : "du2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0023",
+      "name" : "对不起",
+      "definition" : "unworthy; to let down; I'm sorry; excuse me; pardon me; if you please; sorry? (please repeat)",
+      "pinyin" : "dui4 bu5 qi3",
+      "c-count" : "3"
+    },
+    {
+      "lev-ord" : "0024",
+      "name" : "多",
+      "definition" : "many; much; a lot of; numerous; multi-",
+      "pinyin" : "duo1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0025",
+      "name" : "多少",
+      "definition" : "number; amount; somewhat",
+      "pinyin" : "duo1 shao3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0026",
+      "name" : "儿子",
+      "definition" : "son",
+      "pinyin" : "er2 zi5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0027",
+      "name" : "二",
+      "definition" : "two; 2; stupid (Beijing dialect)",
+      "pinyin" : "er4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0028",
+      "name" : "饭馆",
+      "definition" : "restaurant; CL:家[jia1]",
+      "pinyin" : "fan4 guan3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0029",
+      "name" : "飞机",
+      "definition" : "airplane; CL: 架[jia4]",
+      "pinyin" : "fei1 ji1",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0030",
+      "name" : "分钟",
+      "definition" : "minute",
+      "pinyin" : "fen1 zhong1",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0031",
+      "name" : "高兴",
+      "definition" : "happy; glad; willing (to do sth); in a cheerful mood",
+      "pinyin" : "gao1 xing4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0032",
+      "name" : "个",
+      "definition" : "individual; this; that; size; classifier for people or objects in general",
+      "pinyin" : "ge4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0033",
+      "name" : "工作",
+      "definition" : "public park; CL:場|场[chang3]",
+      "pinyin" : "gong1 zuo4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0034",
+      "name" : "狗",
+      "definition" : "dog; CL:隻|只[zhi1],條|条[tiao2]",
+      "pinyin" : "gou3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0035",
+      "name" : "汉语",
+      "definition" : "Chinese language; CL:門|门[men2]",
+      "pinyin" : "Han4 yu3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0036",
+      "name" : "好",
+      "definition" : "good; well; proper; good to; easy to; very; so; (suffix indicating completion or readiness)",
+      "pinyin" : "hao3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0037",
+      "name" : "喝",
+      "definition" : "to drink; to shout (a command); My goodness!",
+      "pinyin" : "he1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0038",
+      "name" : "和",
+      "definition" : "and; together with; with; sum; union; peace; harmony; surname He; Japanese related; Taiwan pr. han4",
+      "pinyin" : "he2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0039",
+      "name" : "很",
+      "definition" : "(adverb of degree); quite; very; awfully",
+      "pinyin" : "hen3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0040",
+      "name" : "后面",
+      "definition" : "rear; back; behind; later; afterwards",
+      "pinyin" : "hou4 mian5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0041",
+      "name" : "回",
+      "definition" : "to circle; to go back; to turn around; to answer; to return; to revolve; Hui ethnic group (Chinese Muslims); time; classifier for acts of a play; section or chapter (of a classic book)",
+      "pinyin" : "hui2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0042",
+      "name" : "会",
+      "definition" : "can; be possible; be able to; will; be likely to; be sure to; to assemble; to meet; to gather; to see; union; group; association; CL:個|个[ge4]; a moment (Taiwan pr. for this sense is hui3)",
+      "pinyin" : "hui4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0043",
+      "name" : "火车站",
+      "definition" : "train station",
+      "pinyin" : "huo3 che1 zhan4",
+      "c-count" : "3"
+    },
+    {
+      "lev-ord" : "0044",
+      "name" : "几",
+      "definition" : "how much; how many; several; a few",
+      "pinyin" : "ji3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0045",
+      "name" : "家",
+      "definition" : "home; family; classifier for families or businesses; refers to the philosophical schools of pre-Han China; noun suffix for specialists in some activity such as musician or revolutionary, corresponds to English -ist, -er, -ary or -ian; surname Jia; CL:個|个[ge4]",
+      "pinyin" : "jia1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0046",
+      "name" : "叫",
+      "definition" : "to shout; to call; to order; to ask; to be called; by (indicates agent in the passive mood)",
+      "pinyin" : "jiao4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0047",
+      "name" : "今天",
+      "definition" : "today; at the present; now",
+      "pinyin" : "jin1 tian1",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0048",
+      "name" : "九",
+      "definition" : "nine; 9",
+      "pinyin" : "jiu3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0049",
+      "name" : "开",
+      "definition" : "to open; to start; to turn on; to boil; to write out (a medical prescription); to operate (vehicle); abbr. for 開爾文|开尔文 degrees Kelvin",
+      "pinyin" : "kai1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0050",
+      "name" : "看",
+      "definition" : "to see; to look at; to read; to watch; to consider; to regard as; to view as; to treat as; to judge; (after repeated verb) to give it a try; depending on (how you're judging); to visit; to call on; to treat (an illness); to look after; Watch out! (for a danger)",
+      "pinyin" : "kan4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0051",
+      "name" : "看见",
+      "definition" : "to see; to catch sight of",
+      "pinyin" : "kan4 jian4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0052",
+      "name" : "块",
+      "definition" : "lump (of earth); chunk; piece; classifier for pieces of cloth, cake, soap etc; colloquial word for yuan (or other unit of currency such as Hong Kong or US dollar etc), usually as 塊錢|块钱",
+      "pinyin" : "kuai4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0053",
+      "name" : "来",
+      "definition" : "to come; to arrive; to come round; ever since; next",
+      "pinyin" : "lai2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0054",
+      "name" : "老师",
+      "definition" : "teacher; CL:個|个[ge4],位[wei4]",
+      "pinyin" : "lao3 shi1",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0055",
+      "name" : "了",
+      "definition" : "(modal particle intensifying preceding clause); (completed action marker)",
+      "pinyin" : "le5",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0056",
+      "name" : "冷",
+      "definition" : "cold",
+      "pinyin" : "leng3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0057",
+      "name" : "里",
+      "definition" : "lining; interior; inside; internal; also written 裡|里 [li3]",
+      "pinyin" : "li3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0058",
+      "name" : "零",
+      "definition" : "zero; nought; zero sign; fractional; fragmentary; odd (of numbers); (placed between two numbers to indicate a smaller quantity followed by a larger one); fraction; (in mathematics) remainder (after division); extra; to wither and fall; to wither",
+      "pinyin" : "ling2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0059",
+      "name" : "六",
+      "definition" : "six; 6",
+      "pinyin" : "liu4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0060",
+      "name" : "妈妈",
+      "definition" : "mama; mommy; mother; CL:個|个[ge4],位[wei4]",
+      "pinyin" : "ma1 ma5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0061",
+      "name" : "吗",
+      "definition" : "(question tag)",
+      "pinyin" : "ma5",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0062",
+      "name" : "买",
+      "definition" : "to buy; to purchase",
+      "pinyin" : "mai3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0063",
+      "name" : "猫",
+      "definition" : "cat; CL:隻|只[zhi1]",
+      "pinyin" : "mao1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0064",
+      "name" : "没",
+      "definition" : "(negative prefix for verbs); have not; not",
+      "pinyin" : "mei2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0065",
+      "name" : "没关系",
+      "definition" : "it doesn't matter",
+      "pinyin" : "mei2 guan1 xi5",
+      "c-count" : "3"
+    },
+    {
+      "lev-ord" : "0066",
+      "name" : "米饭",
+      "definition" : "(cooked) rice",
+      "pinyin" : "mi3 fan4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0067",
+      "name" : "明天",
+      "definition" : "tomorrow",
+      "pinyin" : "ming2 tian1",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0068",
+      "name" : "名字",
+      "definition" : "name (of a person or thing); CL:個|个[ge4]",
+      "pinyin" : "ming2 zi5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0069",
+      "name" : "哪",
+      "definition" : "how; which",
+      "pinyin" : "na3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0069",
+      "name" : "哪儿",
+      "definition" : "where?; wherever; anywhere",
+      "pinyin" : "na3 r5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0070",
+      "name" : "那",
+      "definition" : "that; those; then (in that case); commonly pr. nei4 before a classifier, esp. in Beijing",
+      "pinyin" : "na4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0070",
+      "name" : "那儿",
+      "definition" : "there",
+      "pinyin" : "na4 r5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0071",
+      "name" : "呢",
+      "definition" : "(question particle for subjects already mentioned)",
+      "pinyin" : "ne5",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0072",
+      "name" : "能",
+      "definition" : "to be able to; to be capable of; ability; capability; able; capable; can possibly; (usually used in the negative) to have the possibility of",
+      "pinyin" : "neng2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0073",
+      "name" : "你",
+      "definition" : "you (informal, as opposed to polite 您[nin2])",
+      "pinyin" : "ni3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0074",
+      "name" : "年",
+      "definition" : "year; CL:個|个[ge4]",
+      "pinyin" : "nian2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0075",
+      "name" : "女儿",
+      "definition" : "daughter",
+      "pinyin" : "nv3 er2",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0076",
+      "name" : "朋友",
+      "definition" : "friend; CL:個|个[ge4],位[wei4]",
+      "pinyin" : "peng2 you5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0077",
+      "name" : "漂亮",
+      "definition" : "pretty; beautiful",
+      "pinyin" : "piao4 liang5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0078",
+      "name" : "苹果",
+      "definition" : "apple; CL:個|个[ge4],顆|颗[ke1]",
+      "pinyin" : "ping2 guo3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0079",
+      "name" : "七",
+      "definition" : "seven; 7",
+      "pinyin" : "qi1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0080",
+      "name" : "钱",
+      "definition" : "coin; money; CL:筆|笔[bi3]",
+      "pinyin" : "qian2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0081",
+      "name" : "前面",
+      "definition" : "ahead; in front; preceding; above",
+      "pinyin" : "qian2 mian4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0082",
+      "name" : "请",
+      "definition" : "to ask; to invite; please (do sth); to treat (to a meal etc); to request",
+      "pinyin" : "qing3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0083",
+      "name" : "去",
+      "definition" : "to go; to go to (a place); to cause to go or send (sb); to remove; to get rid of; (when used either before or after a verb) to go in order to do sth; to be apart from in space or time; (after a verb of motion indicates movement away from the speaker); (used after certain verbs to indicate detachment or separation); (of a time or an event etc) just passed or elapsed",
+      "pinyin" : "qu4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0084",
+      "name" : "热",
+      "definition" : "heat; to heat up; fervent; hot (of weather); warm up",
+      "pinyin" : "re4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0085",
+      "name" : "人",
+      "definition" : "man; person; people; CL:個|个[ge4],位[wei4]",
+      "pinyin" : "ren2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0086",
+      "name" : "认识",
+      "definition" : "to know; to recognize; to be familiar with; acquainted with sth; knowledge; understanding; awareness; cognition",
+      "pinyin" : "ren4 shi5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0087",
+      "name" : "日",
+      "definition" : "sun; day; date, day of the month; abbr. for 日本|日本 Japan",
+      "pinyin" : "ri4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0088",
+      "name" : "三",
+      "definition" : "three; 3",
+      "pinyin" : "san1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0089",
+      "name" : "商店",
+      "definition" : "store; shop; CL:家[jia1],個|个[ge4]",
+      "pinyin" : "shang1 dian4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0090",
+      "name" : "上",
+      "definition" : "on; on top; upon; first (of multiple parts); previous; last; upper; higher; above; to climb; to go into; to go up; to attend (class or university)",
+      "pinyin" : "shang4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0091",
+      "name" : "上午",
+      "definition" : "morning; CL:個|个[ge4]",
+      "pinyin" : "shang4 wu3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0092",
+      "name" : "少",
+      "definition" : "few; little; lack",
+      "pinyin" : "shao3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0093",
+      "name" : "谁",
+      "definition" : "who; also pronounced shui2",
+      "pinyin" : "shei2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0094",
+      "name" : "什么",
+      "definition" : "what?; who?; something; anything",
+      "pinyin" : "shen2 me5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0095",
+      "name" : "十",
+      "definition" : "ten; 10",
+      "pinyin" : "shi2",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0096",
+      "name" : "时候",
+      "definition" : "time; length of time; moment; period",
+      "pinyin" : "shi2 hou5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0097",
+      "name" : "是",
+      "definition" : "is; are; am; yes; to be",
+      "pinyin" : "shi4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0098",
+      "name" : "书",
+      "definition" : "book; letter; CL:本[ben3],冊|册[ce4],部[bu4]; see also 書經|书经 Book of History",
+      "pinyin" : "shu1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0099",
+      "name" : "水",
+      "definition" : "water; river; liquid; beverage; additional charges or income; (of clothes) classifier for number of washes",
+      "pinyin" : "shui3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0100",
+      "name" : "水果",
+      "definition" : "fruit; CL:個|个[ge4]",
+      "pinyin" : "shui3 guo3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0101",
+      "name" : "睡觉",
+      "definition" : "to go to bed; to go to sleep",
+      "pinyin" : "shui4 jiao4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0102",
+      "name" : "说话",
+      "definition" : "to speak; to say; to talk; to gossip; to tell stories; talk; word",
+      "pinyin" : "shuo1 hua4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0103",
+      "name" : "四",
+      "definition" : "four; 4",
+      "pinyin" : "si4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0104",
+      "name" : "岁",
+      "definition" : "classifier for years (of age); year; year (of crop harvests)",
+      "pinyin" : "sui4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0105",
+      "name" : "他",
+      "definition" : "he or him; (used for either sex when the sex is unknown or unimportant); (used before sb's name for emphasis); (used as a meaningless mock object); other; another",
+      "pinyin" : "ta1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0106",
+      "name" : "她",
+      "definition" : "she",
+      "pinyin" : "ta1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0107",
+      "name" : "太",
+      "definition" : "highest; greatest; too (much); very; extremely",
+      "pinyin" : "tai4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0108",
+      "name" : "天气",
+      "definition" : "weather",
+      "pinyin" : "tian1 qi4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0109",
+      "name" : "听",
+      "definition" : "to listen; to hear; to obey; a can (loanword from English \"tin\"); classifier for canned beverages",
+      "pinyin" : "ting1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0110",
+      "name" : "同学",
+      "definition" : "(fellow) classmate; CL:位[wei4],個|个[ge4]",
+      "pinyin" : "tong2 xue2",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0111",
+      "name" : "喂",
+      "definition" : "hello (interj., esp. on telephone); hey; to feed (sb or some animal)",
+      "pinyin" : "wei4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0112",
+      "name" : "我",
+      "definition" : "I; me; my",
+      "pinyin" : "wo3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0113",
+      "name" : "我们",
+      "definition" : "we; us; ourselves; our",
+      "pinyin" : "wo3 men5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0114",
+      "name" : "五",
+      "definition" : "five; 5",
+      "pinyin" : "wu3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0115",
+      "name" : "喜欢",
+      "definition" : "to like; to be fond of",
+      "pinyin" : "xi3 huan5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0116",
+      "name" : "下",
+      "definition" : "down; downwards; below; lower; later; next (week etc); second (of two parts); to decline; to go down",
+      "pinyin" : "xia4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0117",
+      "name" : "下午",
+      "definition" : "afternoon; p.m.; CL:個|个[ge4]",
+      "pinyin" : "xia4 wu3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0118",
+      "name" : "下雨",
+      "definition" : "to rain; rainy",
+      "pinyin" : "xia4 yu3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0119",
+      "name" : "先生",
+      "definition" : "teacher; Mister (Mr.); husband; doctor (topolect); CL:個|个[ge4],位[wei4]",
+      "pinyin" : "xian1 sheng5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0120",
+      "name" : "现在",
+      "definition" : "now; at present; at the moment; modern; current; nowadays",
+      "pinyin" : "xian4 zai4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0121",
+      "name" : "想",
+      "definition" : "to think; to believe; to suppose; to wish; to want; to miss",
+      "pinyin" : "xiang3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0122",
+      "name" : "小",
+      "definition" : "small; tiny; few; young",
+      "pinyin" : "xiao3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0123",
+      "name" : "小姐",
+      "definition" : "young lady; miss; CL:個|个[ge4],位[wei4]",
+      "pinyin" : "xiao3 jie5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0124",
+      "name" : "些",
+      "definition" : "some; few; several; (a measure word)",
+      "pinyin" : "xie1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0125",
+      "name" : "写",
+      "definition" : "to write",
+      "pinyin" : "xie3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0126",
+      "name" : "谢谢",
+      "definition" : "to thank; thanks",
+      "pinyin" : "xie4 xie5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0127",
+      "name" : "星期",
+      "definition" : "week; CL:個|个[ge4]",
+      "pinyin" : "xing1 qi1",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0128",
+      "name" : "学生",
+      "definition" : "student; school child",
+      "pinyin" : "xue2 sheng5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0129",
+      "name" : "学习",
+      "definition" : "to learn; to study",
+      "pinyin" : "xue2 xi2",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0130",
+      "name" : "学校",
+      "definition" : "school; CL:所[suo3]",
+      "pinyin" : "xue2 xiao4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0131",
+      "name" : "一",
+      "definition" : "one; 1; single; a (article); as soon as; entire; whole; all; throughout; \"one\" radical in Chinese characters (Kangxi radical 1)",
+      "pinyin" : "yi1",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0132",
+      "name" : "衣服",
+      "definition" : "clothes; CL:件[jian4],套[tao4]",
+      "pinyin" : "yi1 fu5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0133",
+      "name" : "医生",
+      "definition" : "doctor; CL:個|个[ge4],位[wei4],名[ming2]",
+      "pinyin" : "yi1 sheng1",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0134",
+      "name" : "医院",
+      "definition" : "hospital; CL:所[suo3],家[jia1],座[zuo4]",
+      "pinyin" : "yi1 yuan4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0135",
+      "name" : "椅子",
+      "definition" : "chair; CL:把[ba3],套[tao4]",
+      "pinyin" : "yi3 zi5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0136",
+      "name" : "有",
+      "definition" : "to have; there is; there are; to exist; to be",
+      "pinyin" : "you3",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0137",
+      "name" : "月",
+      "definition" : "moon; month; CL:個|个[ge4],輪|轮[lun2]",
+      "pinyin" : "yue4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0138",
+      "name" : "在",
+      "definition" : "(located) at; (to be) in; to exist; in the middle of doing sth; (indicating an action in progress)",
+      "pinyin" : "zai4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0139",
+      "name" : "再见",
+      "definition" : "goodbye; see you again later",
+      "pinyin" : "zai4 jian4",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0140",
+      "name" : "怎么",
+      "definition" : "how?; what?; why?",
+      "pinyin" : "zen3 me5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0141",
+      "name" : "怎么样",
+      "definition" : "how?; how about?; how was it?; how are things?",
+      "pinyin" : "zen3 me5 yang4",
+      "c-count" : "3"
+    },
+    {
+      "lev-ord" : "0142",
+      "name" : "这",
+      "definition" : "this; these; (commonly pr. zhei4 before a classifier, esp. in Beijing)",
+      "pinyin" : "zhe4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0142",
+      "name" : "这儿",
+      "definition" : "here",
+      "pinyin" : "zhe4 r5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0143",
+      "name" : "中国",
+      "definition" : "China; Middle Kingdom",
+      "pinyin" : "Zhong1 guo2",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0144",
+      "name" : "中午",
+      "definition" : "noon; midday; CL:個|个[ge4]",
+      "pinyin" : "zhong1 wu3",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0145",
+      "name" : "住",
+      "definition" : "to live; to dwell; to stay; to reside; to stop",
+      "pinyin" : "zhu4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0146",
+      "name" : "桌子",
+      "definition" : "table; desk; CL:張|张[zhang1],套[tao4]",
+      "pinyin" : "zhuo1 zi5",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0147",
+      "name" : "字",
+      "definition" : "letter; symbol; character; word; CL:個|个[ge4]; courtesy or style name traditionally given to males aged 20 in dynastic China",
+      "pinyin" : "zi4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0148",
+      "name" : "昨天",
+      "definition" : "yesterday",
+      "pinyin" : "zuo2 tian1",
+      "c-count" : "2"
+    },
+    {
+      "lev-ord" : "0149",
+      "name" : "做",
+      "definition" : "to do; to make; to produce; to write; to compose; to act as; to engage in; to hold (a party); to be; to become; to function (in some capacity); to serve as; to be used for; to form (a bond or relationship); to pretend; to feign; to act a part; to put on appearance",
+      "pinyin" : "zuo4",
+      "c-count" : "1"
+    },
+    {
+      "lev-ord" : "0150",
+      "name" : "坐",
+      "definition" : "to sit; to take a seat; to take (a bus, airplane etc); to bear fruit; surname Zuo",
+      "pinyin" : "zuo4",
+      "c-count" : "1"
+    }
+  ];
+
+        var SearchBar = React.createClass({
+
+          // handleChange: function() {
+          //   this.props.onUserInput(
+          //     // this.refs.filterTextInput.getDOMNode().value
+          //     this.refs.filterTextInput.value
+          //     );
+          // },
+          handleChange: function() {
+            this.props.onUserInput(
+              this.refs.filterTextInput.value
+            );
+          },
+
+          render: function() {
+                return (
+                <label>
+                    <h4>Chinese Word Lookup</h4>
+
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      value={this.props.filterText}
+                      ref="filterTextInput"
+                      onChange={this.handleChange}
+                    />
+                </label>
+            );
+          }
+        });
+
+        var WordRow = React.createClass({
+          render: function() {
+                return (
+                <tr>
+                    <td>
+                      <a href="#">{this.props.word.name}</a>
+                    </td>
+                    <td>{this.props.word.pinyin}</td>
+                    <td>{this.props.word.definition}</td>
+                </tr>
+            );
+          }
+        });
+
+        var WordTable = React.createClass({
+          render: function() {
+
+            var props = this.props;
+            var rows = props.words
+                .filter(function(word){
+                  // removed the case conversion to trouble shoot
+                  return word.definition.indexOf(props.filterText) > -1;
+                })
+                .map(function(word){
+              return <WordRow key={word.definition} word={word} />;
+            });
+
+            return (
+              <table>
+                  <thead>
+                      <tr>
+                          <th width="">Word</th>
+                          <th width="">Pinyin</th>
+                          <th width="">Meaning</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {rows}
+                  </tbody>
+              </table>
+            );
+          }
+        });
+
+        var FilterableWordTable = React.createClass({
+          getInitialState: function() {
+            return {
+              filterText : ''
+            };
+          },
+
+          handleUserInput: function(filterText) {
+              this.setState({
+                  filterText: filterText
+              });
+          },
+
+          render: function() {
+            return (
+                <div className="spacer">
+                    <SearchBar
+                      onUserInput={this.handleUserInput}
+                      filterText={this.state.filterText}
+                    />
+                    <WordTable
+                      words={this.props.words}
+                      filterText={this.state.filterText}
+                    />
+                </div>
+            );
+          }
+        });
+
+        ReactDOM.render(
+          <FilterableWordTable words={words} />,
+          document.getElementById('container')
+        );
+    </script>
+</body>
+
+</html>
