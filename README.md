@@ -1,4 +1,4 @@
-# Thinking in React Tutorial
+# React Word Lookup Tutorial
 
 ## Intro
 
@@ -372,7 +372,7 @@ ReactDOM.render(
 );
 ```
 
-When you define a child component of BookCase called Shelves the data is available as a property on props called "books".  So you can pass each book to a child component called BookDetails.  
+When you define a child component of BookCase called Shelves the data is available as a property on props called "books".  So you can pass each book to a child component called BookDetails.
 
 At this point you can set the name of the property for each individual book to something else… like "text" (or, any other arbitrary name.)
 
