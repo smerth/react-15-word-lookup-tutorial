@@ -6,7 +6,36 @@ This project is based on Hendrik Swanepoel's  [Thinking in React](http://tagtree
 
 ![App Screenshot](Screenshot.jpg)
 
-## Installation
+## Install
+
+Clone the repo
+
+```bash
+git clone https://github.com/smerth/react-15-word-lookup-tutorial.git
+```
+
+Install assets
+```bash
+npm install
+```
+
+Run server
+```bash
+node server.js
+```
+
+## Deploy
+
+```bash
+gulp deploy
+```
+
+
+
+
+
+
+## Tutorial Overview
 
 Start with a project folder
 
