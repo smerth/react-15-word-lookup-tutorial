@@ -4,6 +4,8 @@
 
 This project is based on Hendrik Swanepoel's  [Thinking in React](http://tagtree.tv/thinking-in-react) video.  I decided to use Facebook's [Comment React Tutorial](https://github.com/reactjs/react-tutorial) as a starting point...
 
+![App Screenshot](Screenshot.jpg)
+
 ## Installation
 
 Start with a project folder
